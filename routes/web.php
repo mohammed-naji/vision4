@@ -21,3 +21,7 @@ Route::get('/', function () {
 Route::get('about', function() {
     return 'About us';
 });
+
+Route::get('contact', function() {
+    return 'Contact';
+});
