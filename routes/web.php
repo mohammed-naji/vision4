@@ -1,6 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\Site2Controller;
+use App\Http\Controllers\Site3Controller;
 
 Route::get('test', [TestController::class, 'index']);
 // Route::get('test', 'TestController@index');
@@ -63,3 +66,20 @@ Route::get('contact', function() {
 })->name('contact');
 
 Route::get('post/{name}/comments/{id}', function() {})->name('posts');
+
+Route::prefix('site2')->name('site2.')->group(function() {
+    Route::get('/', [Site2Controller::class, 'home'])->name('home');
+    Route::get('/about', [Site2Controller::class, 'about'])->name('about');
+    // Route::get('/services', [Site2Controller::class, 'services'])->name('services');
+    Route::get('/services/{name?}', [Site2Controller::class, 'single_service'])->name('single_service');
+    Route::get('/contact', [Site2Controller::class, 'contact'])->name('contact');
+});
+
+
+Route::prefix('site3')->name('site3.')->group(function() {
+    Route::get('/', [Site3Controller::class, 'index'])->name('index');
+    Route::get('/about', [Site3Controller::class, 'about'])->name('about');
+    Route::get('/services', [Site3Controller::class, 'services'])->name('services');
+    Route::get('/contact', [Site3Controller::class, 'contact'])->name('contact');
+});
+
