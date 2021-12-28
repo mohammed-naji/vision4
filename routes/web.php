@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\Site2Controller;
 use App\Http\Controllers\Site3Controller;
+use App\Http\Controllers\Site4Controller;
+use App\Http\Controllers\Site5Controller;
 
 Route::get('test', [TestController::class, 'index']);
 // Route::get('test', 'TestController@index');
@@ -83,3 +85,12 @@ Route::prefix('site3')->name('site3.')->group(function() {
     Route::get('/contact', [Site3Controller::class, 'contact'])->name('contact');
 });
 
+Route::get('site4/home', [Site4Controller::class, 'index']);
+
+
+Route::prefix('site5')->name('site5.')->group(function() {
+    Route::get('/', [Site5Controller::class, 'index'])->name('index');
+    Route::get('/about', [Site5Controller::class, 'about'])->name('about');
+    Route::get('/post', [Site5Controller::class, 'post'])->name('post');
+    Route::get('/contact', [Site5Controller::class, 'contact'])->name('contact');
+});
