@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FormController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\Site2Controller;
@@ -94,3 +95,7 @@ Route::prefix('site5')->name('site5.')->group(function() {
     Route::get('/post', [Site5Controller::class, 'post'])->name('post');
     Route::get('/contact', [Site5Controller::class, 'contact'])->name('contact');
 });
+
+
+Route::get('form1', [FormController::class, 'form1']);
+Route::post('form1-data', [FormController::class, 'form1Submit'])->name('form1Submit');
