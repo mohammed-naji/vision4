@@ -96,6 +96,10 @@ Route::prefix('site5')->name('site5.')->group(function() {
     Route::get('/contact', [Site5Controller::class, 'contact'])->name('contact');
 });
 
-
 Route::get('form1', [FormController::class, 'form1']);
 Route::post('form1-data', [FormController::class, 'form1Submit'])->name('form1Submit');
+
+
+
+Route::get('form2', [FormController::class, 'form2'])->name('form2');
+Route::post('form2', [FormController::class, 'form2Submit']);

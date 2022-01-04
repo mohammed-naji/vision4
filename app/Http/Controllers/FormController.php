@@ -33,4 +33,46 @@ class FormController extends Controller
 
         return 'Done';
     }
+
+
+    public function form2()
+    {
+        return view('forms.form2');
+    }
+
+    public function form2Submit(Request $request)
+    {
+        // dd($request->except('_token'));
+
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+        ]);
+
+        $name = $request->first_name . ' ' . $request->last_name;
+        $email = $request->email;
+        $password = $request->password;
+
+        return view('forms.form2data', compact('name', 'email', 'password'));
+    }
+
+    public function form3()
+    {
+        return view('forms.form3');
+    }
+
+    public function form3Submit(Request $request)
+    {
+        $request->validate([
+            'name'    => 'required',
+            'phone'   => 'required',
+            'doctor'  => 'required',
+            'day'     => 'required',
+            'time'    => 'required',
+            'country' => 'required',
+        ]);
+
+
+        return 'Done';
+    }
 }

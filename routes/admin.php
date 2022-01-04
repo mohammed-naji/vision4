@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 Route::prefix('adminpanel')->name('adminpanel.')->group(function() {
     Route::get('/', function() {})->name('home');
     Route::get('/home', function() {})->name('fdf');
