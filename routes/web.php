@@ -103,3 +103,10 @@ Route::post('form1-data', [FormController::class, 'form1Submit'])->name('form1Su
 
 Route::get('form2', [FormController::class, 'form2'])->name('form2');
 Route::post('form2', [FormController::class, 'form2Submit']);
+
+
+Route::get('form4', [FormController::class, 'form4'])->name('form4');
+Route::post('form4', [FormController::class, 'form4Submit']);
+
+Route::get('form5', [FormController::class, 'form5'])->name('form5');
+Route::post('form5', [FormController::class, 'form5Submit']);

@@ -75,4 +75,43 @@ class FormController extends Controller
 
         return 'Done';
     }
+
+    public function form4()
+    {
+        return view('forms.form4');
+    }
+
+    public function form4Submit(Request $request)
+    {
+        // $name = time() . rand() . $request->file('image')->getClientOriginalName();
+        $ex = $request->file('image')->getClientOriginalExtension();
+        $name = 'vision4_'.time().'_'.rand().'.'.$ex; // vision4_5454655654646466.png
+        $request->file('image')->move(public_path('uploads/images'), $name);
+
+    }
+
+
+    public function form5()
+    {
+        return view('forms.form5');
+    }
+
+    public function form5Submit(Request $request)
+    {
+        $request->validate([
+            //'name' => 'required|min:3',
+            'name' => ['required', 'min:3'],
+            // 'cv' => 'required|mimes:pdf|max:5120'
+            'cv' => 'required'
+        ]);
+
+        // dd($request->all());
+
+        foreach($request->file('cv') as $item) {
+            $name = time().rand().$item->getClientOriginalName();
+            $item->move(public_path('uploads/files'), $name);
+        }
+
+        return 'Thanks';
+    }
 }
