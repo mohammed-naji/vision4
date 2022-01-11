@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\FormController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
@@ -7,6 +8,8 @@ use App\Http\Controllers\Site2Controller;
 use App\Http\Controllers\Site3Controller;
 use App\Http\Controllers\Site4Controller;
 use App\Http\Controllers\Site5Controller;
+use App\Models\Course;
+use Illuminate\Support\Facades\DB;
 
 Route::get('test', [TestController::class, 'index']);
 // Route::get('test', 'TestController@index');
@@ -110,3 +113,56 @@ Route::post('form4', [FormController::class, 'form4Submit']);
 
 Route::get('form5', [FormController::class, 'form5'])->name('form5');
 Route::post('form5', [FormController::class, 'form5Submit']);
+
+
+Route::get('add-course', function() {
+
+    // add data to courses table
+
+    // sql = INSERT INTO table_name (col_name, ...) VALUES ('col_val',...)
+
+    // DELETE FROM courses WHERE id = 3 or 1 = 1
+
+    // DB::statement('INSERT INTO courses (title, price) VALUES (?, ?)', ['Course Name', 200]);
+
+    // DB::table('courses')->insert([
+    //     'title' => 'Another Title',
+    //     'price' => 250
+    // ]);
+
+    Course::create([
+        'title' => 'Third Course',
+        'price' => 300
+    ]);
+
+    return 'Done';
+
+});
+
+
+
+
+
+
+// // بيعرض كل البيانات من قواعد البيانات بناء علي اسم الجدول
+// Route::get('courses', [CoursesController::class, 'index'])->name('courses.index');
+
+// // بيعرض صفحة الادخال لعنصر جديد
+// Route::get('courses/create', [CoursesController::class, 'create'])->name('courses.create');
+
+// // بياخد البيانات من الفورم وبيضيفها على قواعد البيانات
+// Route::post('courses', [CoursesController::class, 'store'])->name('courses.store');
+
+// // عرض تفاصيل عنصر واحد فقط
+// Route::get('courses/{course}', [CoursesController::class, 'show'])->name('courses.show');
+
+// // عرض صفحة التعديل لعنصر واحد فقط
+// Route::get('courses/{course}/edit', [CoursesController::class, 'edit'])->name('courses.edit');
+
+// // اخذ البيانات الجديدة المتعلقة بالعنصر المراد تعديله
+// Route::put('courses/{course}', [CoursesController::class, 'update'])->name('courses.update');
+
+// // حذف عنصر واحد فقط
+// Route::delete('courses/{course}', [CoursesController::class, 'destroy'])->name('courses.destroy');
+
+Route::resource('courses', CoursesController::class);
