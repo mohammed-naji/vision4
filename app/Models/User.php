@@ -41,4 +41,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function insurance()
+    {
+        return $this->hasOne(Insurance::class, 'u_id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class, 'user_reg');
+    }
 }

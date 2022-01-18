@@ -1,15 +1,16 @@
 <?php
 
-use App\Http\Controllers\CoursesController;
-use App\Http\Controllers\FormController;
+use App\Models\Course;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FormController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\Site2Controller;
 use App\Http\Controllers\Site3Controller;
 use App\Http\Controllers\Site4Controller;
 use App\Http\Controllers\Site5Controller;
-use App\Models\Course;
-use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\RelationController;
 
 Route::get('test', [TestController::class, 'index']);
 // Route::get('test', 'TestController@index');
@@ -166,3 +167,7 @@ Route::get('add-course', function() {
 // Route::delete('courses/{course}', [CoursesController::class, 'destroy'])->name('courses.destroy');
 
 Route::resource('courses', CoursesController::class);
+
+Route::get('one-to-one', [RelationController::class, 'one_to_one']);
+Route::get('one-to-many', [RelationController::class, 'one_to_many']);
+Route::get('many-to-many', [RelationController::class, 'many_to_many']);
